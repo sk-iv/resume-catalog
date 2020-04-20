@@ -10,7 +10,7 @@
     "test": "jest",
     "lint": "eslint --fix ./src",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build",
+    "deploy": "gh-pages -d dist"
   },
   "keywords": [
     "react",
