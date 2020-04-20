@@ -2,12 +2,15 @@
   "name": "resume-catalog",
   "version": "1.0.0",
   "description": "",
+  "homepage": "https://sk-iv.github.io/resume-catalog/",
   "main": "index.js",
   "scripts": {
     "start": "webpack-dev-server --open --mode development",
     "build": "webpack --mode production",
     "test": "jest",
-    "lint": "eslint --fix ./src"
+    "lint": "eslint --fix ./src",
+    "predeploy": "npm build",
+    "deploy": "gh-pages -d build" 
   },
   "keywords": [
     "react",
