@@ -1,0 +1,26 @@
+.menu-item {
+  height: 24px;
+  box-sizing: content-box;
+  background: none;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+
+  &:focus {
+    background: #ddd;
+  }
+  &:hover {
+    background-color: #ddd;
+  }
+  &-selected{
+    background-color: #ddd;
+  }
+  &-gutters{
+    padding-left: 8px;
+    padding-right: 8px;
+  }
+}
+
+.popperClose{
+  pointer-events: none;
+}

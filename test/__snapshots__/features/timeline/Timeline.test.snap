@@ -1,0 +1,195 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Timeline should render the Timeline Component correctly 1`] = `
+<svg
+  height={40}
+>
+  <g
+    key="wmh2f6ad6"
+    style={
+      Object {
+        "transform": "translateX(NaNpx)",
+      }
+    }
+  >
+    <ForwardRef(Tooltip)
+      PopperProps={
+        Object {
+          "style": Object {
+            "width": "150px",
+          },
+        }
+      }
+      placement="top"
+      title={
+        <div>
+          <div
+            className="strong mb-1"
+          >
+            Магнитогорский государственный университет
+          </div>
+          <div>
+            Графический дизайнер
+          </div>
+          <div />
+        </div>
+      }
+    >
+      <ForwardRef(Polygon)
+        fill="#00000020"
+        points="0,30 5,0 NaN,0 NaN,30"
+        stroke="#00000040"
+        strokeWidth="2"
+      />
+    </ForwardRef(Tooltip)>
+  </g>
+  <g
+    key="lxuc82b4t"
+    style={
+      Object {
+        "transform": "translateX(NaNpx)",
+      }
+    }
+  >
+    <ForwardRef(Tooltip)
+      PopperProps={
+        Object {
+          "style": Object {
+            "width": "150px",
+          },
+        }
+      }
+      placement="top"
+      title={
+        <div>
+          <div
+            className="strong mb-1"
+          >
+            Декретный отпуск
+          </div>
+          <div />
+          <div />
+        </div>
+      }
+    >
+      <ForwardRef(Polygon)
+        fill="#00000020"
+        points="0,30 5,0 NaN,0 NaN,30"
+        stroke="#00000040"
+        strokeWidth="2"
+      />
+    </ForwardRef(Tooltip)>
+  </g>
+  <g
+    key="g9kb54cnt"
+    style={
+      Object {
+        "transform": "translateX(NaNpx)",
+      }
+    }
+  >
+    <ForwardRef(Tooltip)
+      PopperProps={
+        Object {
+          "style": Object {
+            "width": "150px",
+          },
+        }
+      }
+      placement="top"
+      title={
+        <div>
+          <div
+            className="strong mb-1"
+          >
+            EVS
+          </div>
+          <div>
+            Frontend-разработчик
+          </div>
+          <div />
+          <div
+            dangerouslySetInnerHTML={
+              Object {
+                "__html": "<p>Разработка клиентской части сайтов (JS + CSS + HTML); UI/UX дизайн;</p>
+",
+              }
+            }
+            style={
+              Object {
+                "color": "#ccc",
+              }
+            }
+          />
+        </div>
+      }
+    >
+      <ForwardRef(Polygon)
+        fill="hsl(var(--color-accent-start), 0.5)"
+        points="0,30 5,0 NaN,0 NaN,30"
+        stroke="#00000040"
+        strokeWidth="2"
+      />
+    </ForwardRef(Tooltip)>
+  </g>
+  <g
+    key="x9sj900oj"
+    style={
+      Object {
+        "transform": "translateX(NaNpx)",
+      }
+    }
+  >
+    <ForwardRef(Tooltip)
+      PopperProps={
+        Object {
+          "style": Object {
+            "width": "150px",
+          },
+        }
+      }
+      placement="top"
+      title={
+        <div>
+          <div
+            className="strong mb-1"
+          >
+            Грамотундра
+          </div>
+          <div>
+            Frontend-разработчик
+          </div>
+          <div />
+          <div
+            dangerouslySetInnerHTML={
+              Object {
+                "__html": "<p>Разработка клиентской части сайта на (React + Apollo GraphQL + CSS);</p>
+",
+              }
+            }
+            style={
+              Object {
+                "color": "#ccc",
+              }
+            }
+          />
+        </div>
+      }
+    >
+      <ForwardRef(Polygon)
+        fill="hsl(var(--color-accent-start), 0.5)"
+        points="0,30 5,0 NaN,0 NaN,30"
+        stroke="#00000040"
+        strokeWidth="2"
+      />
+    </ForwardRef(Tooltip)>
+  </g>
+  <line
+    stroke="black"
+    x1="0"
+    x2={500}
+    y1="30"
+    y2="30"
+  />
+</svg>
+`;

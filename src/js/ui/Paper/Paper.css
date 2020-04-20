@@ -1,0 +1,17 @@
+.shadow--rounded {
+  border-radius: 2rem;
+}
+.paper-popover {
+  position: absolute !important;
+  /* overflow-y: auto;
+  overflow-x: hidden; */
+  min-width: 16px;
+  min-height: 16px;
+  background-color: #ffffff50;
+  max-width: calc(100vw - 32px);
+  max-height: calc(100vh - 32px);
+
+  &:focus {
+    outline: none;
+  }
+}
