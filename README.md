@@ -1,4 +1,4 @@
-# @howtocards/frontendv
+# resume-catalog
 
 ## Available Scripts
 
