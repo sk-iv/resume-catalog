@@ -9,8 +9,8 @@
     "build": "webpack --mode production",
     "test": "jest",
     "lint": "eslint --fix ./src",
-    "predeploy": "npm build",
-    "deploy": "gh-pages -d build" 
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
   },
   "keywords": [
     "react",
