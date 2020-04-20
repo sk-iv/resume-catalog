@@ -78,7 +78,7 @@ const EditCardCommonForm = ({ submitCallback, values }) => {
                 <SvgUse name="markdown" />
               </div>
             </Tooltip>
-                        </InputAdornment>,
+          </InputAdornment>,
         }}
       />
       <ChipInput

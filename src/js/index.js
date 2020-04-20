@@ -8,7 +8,7 @@ const root = document.querySelector('#root');
 const render = () => {
   if (root) {
     ReactDom.render(
-      <Router>
+      <Router basename={BASENAME}>
         <App />
       </Router>,
       root,

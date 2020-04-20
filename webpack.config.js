@@ -67,10 +67,13 @@ module.exports = {
   plugins: [
     new HtmlWebPackPlugin({
       template: './src/index.html',
-      filename: './index.html',
+      filename: '../index.html',
     }),
     new MiniCssExtractPlugin({
       filename: 'bundle.css',
+    }),
+    new webpack.DefinePlugin({
+      BASENAME: JSON.stringify('/resume-catalog2/'),
     }),
   ],
   devServer: {
