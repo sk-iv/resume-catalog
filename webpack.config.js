@@ -72,9 +72,9 @@ module.exports = {
     new MiniCssExtractPlugin({
       filename: 'bundle.css',
     }),
-    new webpack.DefinePlugin({
-      BASENAME: JSON.stringify('/resume-catalog2/'),
-    }),
+    // new webpack.DefinePlugin({
+    //   BASENAME: JSON.stringify('/resume-catalog2/'),
+    // }),
   ],
   devServer: {
     historyApiFallback: true,

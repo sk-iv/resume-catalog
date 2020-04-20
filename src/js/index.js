@@ -8,7 +8,7 @@ const root = document.querySelector('#root');
 const render = () => {
   if (root) {
     ReactDom.render(
-      <Router basename={BASENAME}>
+      <Router basename="/resume-catalog2">
         <App />
       </Router>,
       root,
