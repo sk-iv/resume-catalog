@@ -1,9 +1,11 @@
+const webpack = require('webpack');
+
 const path = require('path');
 const HtmlWebPackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 // Try the environment variable, otherwise use root
-const ASSET_PATH = process.env.ASSET_PATH || '/';
+// const ASSET_PATH = process.env.ASSET_PATH || '/';
 
 module.exports = {
   entry: {
@@ -11,8 +13,8 @@ module.exports = {
   },
   output: {
     filename: 'main.js',
-    path: path.resolve(__dirname, 'dist'),
-    publicPath: ASSET_PATH,
+    path: path.resolve(__dirname, 'dist/assets'),
+    publicPath: 'assets/',
   },
   resolve: {
     extensions: ['.js', '.jsx'],
@@ -69,7 +71,7 @@ module.exports = {
     }),
     new MiniCssExtractPlugin({
       filename: 'bundle.css',
-    })
+    }),
   ],
   devServer: {
     historyApiFallback: true,
