@@ -6,15 +6,14 @@ import Tooltip from '../../ui/Tooltip';
 const Polygon = React.forwardRef(({
   points, fill, strokeWidth, stroke,
 }, ref) => (
-    <polygon
-      stroke={stroke}
-      strokeWidth={strokeWidth}
-      ref={ref}
-      fill={fill}
-      points={points}
-    />
-  )
-);
+  <polygon
+    stroke={stroke}
+    strokeWidth={strokeWidth}
+    ref={ref}
+    fill={fill}
+    points={points}
+  />
+));
 
 Polygon.propTypes = {
   points: PropTypes.string,
@@ -49,9 +48,8 @@ const Timeline = ({
                   />
                   )
                 }
-
                 </div>
-)}
+              )}
               PopperProps={{ style: { width: '150px' } }}
               placement="top"
             >

@@ -4,17 +4,18 @@ const path = require('path');
 const HtmlWebPackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
-// Try the environment variable, otherwise use root
-// const ASSET_PATH = process.env.ASSET_PATH || '/';
 
-module.exports = {
+// Try the environment variable, otherwise use root
+// argv.mode !== 'production' ? '/' : 'assets/'
+
+module.exports = (env, argv) => ({
   entry: {
     main: './src/js/index.js',
   },
   output: {
     filename: 'main.js',
     path: path.resolve(__dirname, 'dist/assets'),
-    publicPath: 'assets/',
+    publicPath: argv.mode !== 'production' ? '/' : 'assets/',
   },
   resolve: {
     extensions: ['.js', '.jsx'],
@@ -67,16 +68,16 @@ module.exports = {
   plugins: [
     new HtmlWebPackPlugin({
       template: './src/index.html',
-      filename: '../index.html',
+      filename: argv.mode !== 'production' ? './index.html' : '../index.html',
     }),
     new MiniCssExtractPlugin({
       filename: 'bundle.css',
     }),
     // new webpack.DefinePlugin({
-    //   BASENAME: JSON.stringify('/resume-catalog2/'),
+    //   'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV),
     // }),
   ],
   devServer: {
     historyApiFallback: true,
   },
-};
+});

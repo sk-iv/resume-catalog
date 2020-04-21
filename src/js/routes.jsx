@@ -24,7 +24,7 @@ function RouteWithSubRoutes(route) {
 export const Routes = () => (
   <Switch>
     {routes.map((route) => (
-      <RouteWithSubRoutes key={Math.random().toString(36).substr(2, 9)} {...route} />
+      <RouteWithSubRoutes key={route.path} {...route} />
     ))}
   </Switch>
 );

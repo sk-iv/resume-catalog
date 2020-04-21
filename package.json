@@ -5,8 +5,8 @@
   "homepage": "https://sk-iv.github.io/resume-catalog2/",
   "main": "index.js",
   "scripts": {
-    "start": "webpack-dev-server --open --mode development",
-    "build": "webpack --mode production",
+    "start": "webpack-dev-server --open --env.NODE_ENV=development --mode development",
+    "build": "webpack --env.NODE_ENV=production --mode production",
     "test": "jest",
     "lint": "eslint --fix ./src",
     "predeploy": "npm run build",
