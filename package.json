@@ -2,7 +2,7 @@
   "name": "resume-catalog",
   "version": "1.0.0",
   "description": "",
-  "homepage": "https://sk-iv.github.io/resume-catalog2/",
+  "homepage": "https://sk-iv.github.io/resume-catalog/",
   "main": "index.js",
   "scripts": {
     "start": "webpack-dev-server --open --env.NODE_ENV=development --mode development",
