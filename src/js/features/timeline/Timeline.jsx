@@ -4,9 +4,10 @@ import PropTypes from 'prop-types';
 import Tooltip from '../../ui/Tooltip';
 
 const Polygon = React.forwardRef(({
-  points, fill, strokeWidth, stroke,
+  points, fill, strokeWidth, stroke, ...other
 }, ref) => (
   <polygon
+    {...other}
     stroke={stroke}
     strokeWidth={strokeWidth}
     ref={ref}

@@ -42,8 +42,8 @@ const PreviewCard = ({
         <GridTile offset={5} size={8}>
           <Grid direction="column" className="p-3">
             <Link
-              component="a"
-              href={`/edit/card/${id}`}
+              component={Link}
+              to={{ pathname: `/edit/card/${id}` }}
               style={{
                 position: 'absolute', top: 0, right: 0, margin: '.3rem',
               }}
