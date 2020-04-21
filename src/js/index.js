@@ -10,7 +10,7 @@ const root = document.querySelector('#root');
 const render = () => {
   if (root) {
     ReactDom.render(
-      <Router basename={devMode ? '/' : '/resume-catalog2'}>
+      <Router basename={devMode ? '/' : '/resume-catalog'}>
         <App />
       </Router>,
       root,
