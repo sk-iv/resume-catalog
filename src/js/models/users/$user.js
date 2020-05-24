@@ -1,6 +1,6 @@
 import { createStore, createEffect, createStoreObject } from 'effector';
 import { normalize, schema } from 'normalizr';
-
+import usersApi from '../../api/users';
 // https://github.com/paularmstrong/normalizr/blob/HEAD/docs/api.md#objectdefinition
 
 const userSchema = new schema.Entity('user', {}, {
@@ -13,8 +13,7 @@ const userSchema = new schema.Entity('user', {}, {
 export const getUser = createEffect('get user')
   .use(({ id }) => {
     if (id) {
-      return fetch(`https://resume-catalog.firebaseio.com/users/${id}.json`)
-        .then((res) => res.json())
+      return usersApi.getItem(id)
         .then((data) => {
           const j = normalize(data, userSchema);
           return j.entities.user[j.result];

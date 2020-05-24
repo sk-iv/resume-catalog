@@ -7,6 +7,7 @@ import Paper from '../../ui/Paper';
 import Chip from '../../ui/Chip';
 import Timeline from '../timeline';
 import Link from '../../ui/Link';
+import { Link as RouterLink } from "react-router-dom";
 
 const PreviewCard = ({
   id, title, subtitle, text, chips, units, img
@@ -42,7 +43,7 @@ const PreviewCard = ({
         <GridTile offset={5} size={8}>
           <Grid direction="column" className="p-3">
             <Link
-              component={Link}
+              component={RouterLink}
               to={{ pathname: `/edit/card/${id}` }}
               style={{
                 position: 'absolute', top: 0, right: 0, margin: '.3rem',

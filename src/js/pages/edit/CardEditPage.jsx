@@ -5,7 +5,7 @@ import slugify from 'slugify';
 import { EditCardCommonForm, EditCardExperienceForm } from '../../features/editCardForm';
 import Grid, { GridTile } from '../../ui/Grid';
 import NavFlat from '../../features/navigation';
-import { $user, getUser } from '../../../db';
+import { $user, getUser, updateUser } from '../../models';
 
 
 const sections = [
@@ -39,9 +39,7 @@ const CardEditPage = ({ location, history, match: { params } }) => {
   if (error) return <p>{error.message}</p>;
   if (params.userId && !data) return <p>Данные не загрузились</p>;
 
-  const handlerSubmit = (e) => {
-    console.log('handlerSubmit', e.target);
-  };
+  const handlerSubmit = (payload) => updateUser(payload);
 
   const components = {
     EditCardCommonForm: <EditCardCommonForm submitCallback={handlerSubmit} values={params.userId ? data : null} />,

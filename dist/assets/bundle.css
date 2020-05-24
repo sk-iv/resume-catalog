@@ -5901,113 +5901,6 @@ html, body{
   margin-top:-(var(--appbar-height));
 }
 
-.form-control {
-  display: inline-flex;
-  flex-direction: column;
-  position: relative;
-  /*Reset fieldset default style*/
-  min-width: 0;
-  padding: 0;
-  margin: 0;
-  border: 0;
-}
-
-  .form-control--marginNormal {
-    margin-top: 10px;
-    margin-bottom: 10px;
-  }
-
-  .form-control--marginDense {
-    margin-top: 10px;
-    margin-bottom: 10px;
-  }
-
-  .form-control--fullWidth {
-    width: 100%;
-  }
-
-  .form-control-error .form-label, .form-control-error .form-helper-text{
-    color: hsl(var(--error-hue), 100%, 52%);
-  }
-
-.form-helper-text {
-  color: #ccc;
-  font-size: 12px;
-  text-align: left;
-  margin-top: 2px;
-  line-height: 1em;
-  min-height: 1em;
-}
-
-  .form-helper-text-text--dense {
-    margin-top: 2px;
-  }
-
-  .form-helper-text-text--error {
-    color: hsl(var(--error-hue), 100%, 52%);
-  }
-
-  .form-helper-text-text--disabled {
-    color: hsl(0, 50%, 42%);
-  }
-
-.FormControlLabel {
-  display: inline-flex;
-  align-items: center;
-  cursor: pointer;
-  position: relative;
-  /*// Remove grey highlight*/
-  -webkit-tap-highlight-color: transparent;
-}
-
-  .FormControlLabel-disabled {
-    color: #888888;
-    cursor: not-allowed;
-  }
-
-  .FormControlLabel-label {
-    -webkit-user-select: none;
-       -moz-user-select: none;
-        -ms-user-select: none;
-            user-select: none;
-    padding-left: 0.5rem;
-    display: inline-flex;
-  }
-
-.form-group {
-  display: inline-flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  border-radius: 4px 4px 0px 0px;
-}
-
-  .form-group--row {
-    flex-direction: row;
-  }
-
-.form-label {
-  color: currentColor;
-  font-size: 16px;
-  line-height: 1;
-  padding: 0;
-}
-
-  .form-label-focused {
-    color: hsl(var(--color-secondary-start));
-  }
-
-  .form-label-error {
-    color: #ddd;
-  }
-
-  .form-label-disabled {
-    color: #ddd;
-  }
-
-  .form-label-error.form-label-asterisk:after{
-    content:"*"
-  }
-
 .list {
   flex: 1 1 auto;
   list-style: none;
@@ -6225,6 +6118,113 @@ html, body{
 .popperClose{
   pointer-events: none;
 }
+
+.form-control {
+  display: inline-flex;
+  flex-direction: column;
+  position: relative;
+  /*Reset fieldset default style*/
+  min-width: 0;
+  padding: 0;
+  margin: 0;
+  border: 0;
+}
+
+  .form-control--marginNormal {
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+
+  .form-control--marginDense {
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+
+  .form-control--fullWidth {
+    width: 100%;
+  }
+
+  .form-control-error .form-label, .form-control-error .form-helper-text{
+    color: hsl(var(--error-hue), 100%, 52%);
+  }
+
+.form-helper-text {
+  color: #ccc;
+  font-size: 12px;
+  text-align: left;
+  margin-top: 2px;
+  line-height: 1em;
+  min-height: 1em;
+}
+
+  .form-helper-text-text--dense {
+    margin-top: 2px;
+  }
+
+  .form-helper-text-text--error {
+    color: hsl(var(--error-hue), 100%, 52%);
+  }
+
+  .form-helper-text-text--disabled {
+    color: hsl(0, 50%, 42%);
+  }
+
+.FormControlLabel {
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+  position: relative;
+  /*// Remove grey highlight*/
+  -webkit-tap-highlight-color: transparent;
+}
+
+  .FormControlLabel-disabled {
+    color: #888888;
+    cursor: not-allowed;
+  }
+
+  .FormControlLabel-label {
+    -webkit-user-select: none;
+       -moz-user-select: none;
+        -ms-user-select: none;
+            user-select: none;
+    padding-left: 0.5rem;
+    display: inline-flex;
+  }
+
+.form-group {
+  display: inline-flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  border-radius: 4px 4px 0px 0px;
+}
+
+  .form-group--row {
+    flex-direction: row;
+  }
+
+.form-label {
+  color: currentColor;
+  font-size: 16px;
+  line-height: 1;
+  padding: 0;
+}
+
+  .form-label-focused {
+    color: hsl(var(--color-secondary-start));
+  }
+
+  .form-label-error {
+    color: #ddd;
+  }
+
+  .form-label-disabled {
+    color: #ddd;
+  }
+
+  .form-label-error.form-label-asterisk:after{
+    content:"*"
+  }
 
 .field-control {
    /*Mimics the default input display property used by browsers for an input.*/

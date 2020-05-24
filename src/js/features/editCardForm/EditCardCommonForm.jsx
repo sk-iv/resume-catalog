@@ -2,58 +2,111 @@ import * as React from 'react';
 import PropTypes from 'prop-types';
 import MaskedInput from 'react-text-mask';
 import createAutoCorrectedDatePipe from 'text-mask-addons/dist/createAutoCorrectedDatePipe';
-import { useForm } from '../../ui/Form';
-import TextField, { ChipInput } from '../../ui/TextField';
+// import { useForm } from '../../ui/Form';
+import { useForm, Controller } from 'react-hook-form';
+import CreatableSelect from 'react-select/creatable';
+import TextField from '../../ui/TextField';
 import { InputAdornment } from '../../ui/Input';
 import Tooltip from '../../ui/Tooltip';
 import { SvgUse } from '../../ui/SvgIcon';
-import editCardCommonModel from './model';
+import Button from '../../ui/Button';
+import {
+  checkAtLeastLength,
+} from '../../ui/Input/services';
 
 const autoCorrectedDatePipe = createAutoCorrectedDatePipe('dd/mm/yyyy');
 
-const TextMaskDate = (props) => (
-  <MaskedInput
-    {...props}
-    mask={[/[0-3]/, /\d/, '.', /[0-1]/, /\d/, '.', /[0-2]/, /\d/, /\d/, /\d/]}
-    placeholderChar={'\u005f'}
-    pipe={autoCorrectedDatePipe}
-    guide
-    keepCharPositions
-    showMask
-  />
-);
+const TextMaskDate = ({inputRef, ...props}) => {
+  return (
+    <MaskedInput
+      {...props}
+      mask={[/[0-3]/, /\d/, '.', /[0-1]/, /\d/, '.', /[0-2]/, /\d/, /\d/, /\d/]}
+      placeholderChar={'\u005f'}
+      pipe={autoCorrectedDatePipe}
+      guide
+      keepCharPositions
+      showMask
+    />
+  );
+};
 
-const EditCardCommonForm = ({ submitCallback, values }) => {
-  const [inputs, setInputs, setSubmit] = useForm(editCardCommonModel, submitCallback, values);
+const colourOptions = [
+  { value: 'react', label: 'react' },
+  { value: 'js', label: 'js' },
+  { value: 'css', label: 'css' },
+  { value: 'html', label: 'html' },
+  { value: 'redux', label: 'redux' },
+  { value: 'jest/enzyme', label: 'jest/enzyme' },
+];
+const EditCardCommonForm = ({ values, submitCallback }) => {
+  // const [inputs, setInputs, setSubmit] = useForm(editCardCommonModel, submitCallback, values);
+
+  const methods = useForm({
+    mode: 'onChange',
+    reValidateMode: 'onChange',
+  });
+  const { handleSubmit, control, errors } = methods;
+  const onSubmit = (data) => submitCallback({ id: '25lk78', ...data });
+
+  const handleChange = (newValue, actionMeta) => {
+    console.group('Value Changed');
+    console.log(newValue);
+    console.log(`action: ${actionMeta.action}`);
+    console.groupEnd();
+  };
 
   return (
 
-
-    <div style={{ display: 'flex', flexDirection: 'column' }}>
-      <TextField
-        {...inputs.name}
-        value={inputs.name.value || ''}
-        onChange={setInputs}
-        onDebounce={submitCallback}
-        className="w-100"
+    <form style={{ display: 'flex', flexDirection: 'column' }}>
+      <Controller
+        as={TextField}
+        name="name"
+        control={control}
+        rules={{
+          // required: {
+          //   value: true,
+          //   message: 'Phone number is required',
+          // },
+          // minLength: {
+          //   value: 12,
+          //   message: 'Phone number should be minimum length of 12',
+          // },
+          validate: (value) => {
+            if (checkAtLeastLength(value, 30)) {
+              return 'Не должно превышать более 30 символов';
+            }
+          },
+        }}
+        defaultValue={values?.name || ''}
+        type="text"
+        label="Имя Фамилия"
+        helperText={errors?.name?.message}
+        error={!!(errors?.name)}
+        className="w-100 mx-auto"
         style={{ maxWidth: '300px' }}
         margin="normal"
       />
-      <TextField
-        {...inputs.position}
-        value={inputs.position.value || ''}
-        onChange={setInputs}
-        onDebounce={submitCallback}
-        className="w-100"
+      <Controller
+        as={TextField}
+        control={control}
+        name="position"
+        label="Должность"
+        type="text"
+        defaultValue={values?.position || ''}
+        error={!!(errors.position)}
+        className="w-100 mx-auto"
         style={{ maxWidth: '300px' }}
         margin="normal"
       />
-      <TextField
-        {...inputs.localeDateOfBirth}
-        value={inputs.localeDateOfBirth.value || ''}
-        onChange={setInputs}
-        onDebounce={submitCallback}
-        className="w-100"
+      <Controller
+        as={TextField}
+        control={control}
+        name="localeDateOfBirth"
+        label="Дата рождения"
+        type="text"
+        defaultValue={values?.localeDateOfBirth || ''}
+        error={!!(errors.localeDateOfBirth)}
+        className="w-100 mx-auto"
         style={{ maxWidth: '300px' }}
         margin="normal"
         InputProps={{
@@ -61,41 +114,51 @@ const EditCardCommonForm = ({ submitCallback, values }) => {
         }}
         InputLabelProps={{ shrink: true }}
       />
-      <TextField
-        {...inputs.interests}
-        value={inputs.interests?.value || ''}
-        onChange={setInputs}
-        onDebounce={submitCallback}
+      <Controller
+        as={TextField}
+        control={control}
+        name="interests"
+        label="О себе"
+        type="textarea"
+        defaultValue={values?.interests || ''}
+        error={!!(errors.interests)}
         multiline
         rows="4"
-        className="w-100"
+        className="w-100 mx-auto"
         style={{ maxWidth: '300px' }}
         margin="normal"
         InputProps={{
-          endAdornment: <InputAdornment position="end">
+          endAdornment:
+          <InputAdornment position="end">
             <Tooltip title="Markdown">
               <div className="text-muted icon-box">
                 <SvgUse name="markdown" />
               </div>
             </Tooltip>
-          </InputAdornment>,
+          </InputAdornment>
         }}
       />
-      <ChipInput
-        onChange={(chips) => handleChange(chips)}
-        onAdd={(chip) => {}}
-        style={{ maxWidth: '300px' }}
-        label="Навыки"
-        value={['react', 'js', 'css', 'html', 'apollo', 'graphql', 'effector', 'jest/enzyme']}
+      <Controller
+        as={(
+          <CreatableSelect
+            isMulti
+            options={colourOptions || []}
+          />
+        )}
+        control={control}
+        rules={{ required: true }}
+        name="skills"
+        defaultValue={values?.skills.map(j => ({ label: j })) || []}
       />
-    </div>
 
+      <Button color="secondary" onClick={handleSubmit(onSubmit)} className="mt-3">Сохранить</Button>
+    </form>
 
   );
 };
 export default EditCardCommonForm;
 
 EditCardCommonForm.propTypes = {
-  submitCallback: PropTypes.func,
-  values: PropTypes.array
+  values: PropTypes.array,
+  updateUser: PropTypes.func,
 };
