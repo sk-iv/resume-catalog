@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import ReactDOM from 'react-dom';
 import { Transition } from 'react-transition-group';
-import { debounce } from '../utils/debounce';
+import debounce from '../utils/debounce';
 import useForkRef from '../utils/useForkRef';
 import { reflow, getTransitionProps } from './utils';
 

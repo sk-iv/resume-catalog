@@ -2,15 +2,15 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { useMeasure } from 'react-use';
 import marked from 'marked';
+import { Link as RouterLink } from 'react-router-dom';
 import Grid, { GridTile } from '../../ui/Grid';
 import Paper from '../../ui/Paper';
 import Chip from '../../ui/Chip';
 import Timeline from '../timeline';
 import Link from '../../ui/Link';
-import { Link as RouterLink } from "react-router-dom";
 
 const PreviewCard = ({
-  id, title, subtitle, text, chips, units, img
+  id, title, subtitle, text, chips = [], units = [], img,
 }) => {
   const [ref, {
     width,

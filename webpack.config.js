@@ -18,7 +18,7 @@ module.exports = (env, argv) => ({
     publicPath: argv.mode !== 'production' ? '/' : 'assets/',
   },
   resolve: {
-    extensions: ['.js', '.jsx'],
+    extensions: ['.ts', '.js', '.jsx'],
   },
   module: {
     rules: [
@@ -29,7 +29,7 @@ module.exports = (env, argv) => ({
         loader: 'eslint-loader',
       },
       {
-        test: /\.(js|jsx)$/,
+        test: /\.(ts|js)x?$/,
         exclude: /node_modules/,
         use: {
           loader: 'babel-loader',
