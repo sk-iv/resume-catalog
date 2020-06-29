@@ -16,19 +16,17 @@ import {
 
 const autoCorrectedDatePipe = createAutoCorrectedDatePipe('dd/mm/yyyy');
 
-const TextMaskDate = ({inputRef, ...props}) => {
-  return (
-    <MaskedInput
-      {...props}
-      mask={[/[0-3]/, /\d/, '.', /[0-1]/, /\d/, '.', /[0-2]/, /\d/, /\d/, /\d/]}
-      placeholderChar={'\u005f'}
-      pipe={autoCorrectedDatePipe}
-      guide
-      keepCharPositions
-      showMask
-    />
-  );
-};
+const TextMaskDate = ({ inputRef, ...props }) => (
+  <MaskedInput
+    {...props}
+    mask={[/[0-3]/, /\d/, '.', /[0-1]/, /\d/, '.', /[0-2]/, /\d/, /\d/, /\d/]}
+    placeholderChar={'\u005f'}
+    pipe={autoCorrectedDatePipe}
+    guide
+    keepCharPositions
+    showMask
+  />
+);
 
 const colourOptions = [
   { value: 'react', label: 'react' },
@@ -39,21 +37,12 @@ const colourOptions = [
   { value: 'jest/enzyme', label: 'jest/enzyme' },
 ];
 const EditCardCommonForm = ({ values, submitCallback }) => {
-  // const [inputs, setInputs, setSubmit] = useForm(editCardCommonModel, submitCallback, values);
-
   const methods = useForm({
     mode: 'onChange',
     reValidateMode: 'onChange',
   });
   const { handleSubmit, control, errors } = methods;
   const onSubmit = (data) => submitCallback({ id: '25lk78', ...data });
-
-  const handleChange = (newValue, actionMeta) => {
-    console.group('Value Changed');
-    console.log(newValue);
-    console.log(`action: ${actionMeta.action}`);
-    console.groupEnd();
-  };
 
   return (
 
@@ -128,14 +117,15 @@ const EditCardCommonForm = ({ values, submitCallback }) => {
         style={{ maxWidth: '300px' }}
         margin="normal"
         InputProps={{
-          endAdornment:
-          <InputAdornment position="end">
-            <Tooltip title="Markdown">
-              <div className="text-muted icon-box">
-                <SvgUse name="markdown" />
-              </div>
-            </Tooltip>
-          </InputAdornment>
+          endAdornment: (
+            <InputAdornment position="end">
+              <Tooltip title="Markdown">
+                <div className="text-muted icon-box">
+                  <SvgUse name="markdown" />
+                </div>
+              </Tooltip>
+            </InputAdornment>
+          ),
         }}
       />
       <Controller
@@ -148,7 +138,7 @@ const EditCardCommonForm = ({ values, submitCallback }) => {
         control={control}
         rules={{ required: true }}
         name="skills"
-        defaultValue={values?.skills.map(j => ({ label: j })) || []}
+        defaultValue={values?.skills.map((j) => ({ label: j })) || []}
       />
 
       <Button color="secondary" onClick={handleSubmit(onSubmit)} className="mt-3">Сохранить</Button>
@@ -159,6 +149,6 @@ const EditCardCommonForm = ({ values, submitCallback }) => {
 export default EditCardCommonForm;
 
 EditCardCommonForm.propTypes = {
-  values: PropTypes.array,
-  updateUser: PropTypes.func,
+  values: PropTypes.arrayOf(PropTypes.object),
+  submitCallback: PropTypes.func,
 };

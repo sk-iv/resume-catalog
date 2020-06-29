@@ -61,7 +61,7 @@
     "typescript": "^3.9.3",
     "webpack": "^4.42.1",
     "webpack-cli": "^3.3.11",
-    "webpack-dev-server": "^3.10.3"
+    "webpack-dev-server": "^3.11.0"
   },
   "dependencies": {
     "@popperjs/core": "^2.3.1",
@@ -73,6 +73,7 @@
     "graphql-anywhere": "^4.2.6",
     "graphql-tag": "^2.10.3",
     "history": "^4.10.1",
+    "lodash-es": "^4.17.15",
     "lokijs": "^1.5.8",
     "marked": "^0.8.2",
     "normalizr": "^3.6.0",
@@ -85,9 +86,11 @@
     "react-router-config": "^5.1.1",
     "react-router-dom": "^5.1.2",
     "react-select": "^3.1.0",
+    "react-spring": "^8.0.27",
     "react-text-mask": "^5.4.3",
     "react-transition-group": "^4.3.0",
     "react-use": "^14.1.1",
+    "react-use-gesture": "^7.0.15",
     "slugify": "^1.4.0",
     "string-similarity": "^4.0.1",
     "styled-components": "^5.1.0",

@@ -98,9 +98,9 @@ PreviewCard.propTypes = {
    * Skills.
    */
   chips: PropTypes.arrayOf(PropTypes.string),
-  units: PropTypes.array,
+  units: PropTypes.arrayOf(PropTypes.object),
   /**
    * // TODO: dummy image if img empty
    */
-  img: PropTypes.string
+  img: PropTypes.string,
 };
