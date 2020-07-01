@@ -12,7 +12,6 @@ const getList = () => request('GET', '/users.json');
  */
 const updateItem = (body) => request('PUT', '/users.json', { options: { body } });
 
-
 const usersApi = {
   getItem,
   getList,

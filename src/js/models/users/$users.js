@@ -1,24 +1,72 @@
-import { createStore, createEffect, createStoreObject } from 'effector';
+import {
+  createStore, createEffect, createStoreObject, createEvent, forward,
+} from 'effector';
+import { normalize } from 'normalizr';
+import stringSimilarity from 'string-similarity';
+
 import usersApi from '../../api/users';
+import usersSchema from './users.schema';
+import timeDiff from '../../lib/timeDiff';
 
-const snapshotToArray = (snapshot) => Object.entries(snapshot)
-  .map((e) => ({ ...e[1], key: e[0] }));
 
+const parseComputeSize = (arr, name) => {
+  if (arr.length) {
+    const min = arr[0].from;
+    const max = arr[arr.length - 1].to === 'NOW_DATE' ? Math.floor((new Date()).getTime() / 1000) : arr[arr.length - 1].to;
 
-export const getUsers = createEffect('get user')
-  .use(() => usersApi.getList());
+    const diff = max - min;
+    return arr.map((j) => {
+      const shiftFrom = j.from - min;
+      const to = j.to === 'NOW_DATE' ? max : j.to;
+      const timeRange = timeDiff(new Date(j.from * 1000), new Date(to * 1000));
 
-const loading = createStore(false)
-  .on(getUsers.pending, (state, pending) => pending);
+      return {
+        ...j,
+        width: (to - min - shiftFrom) / diff,
+        offset: (shiftFrom) / diff,
+        experienceTimeinterval: `${timeRange.years} г ${timeRange.months} мес.`,
+        accent: stringSimilarity.compareTwoStrings(j.subtitle || '', name) > 0.6,
+      };
+    });
+  }
+  return null;
+};
 
-const error = createStore(null)
-  .on(getUsers.fail, (state, { error: err }) => err);
+const dbComputed = (data) => data.result.map((id) => ({
+  ...data.entities.users[id],
+  units: data.entities.users[id].timeline
+    ? parseComputeSize(data.entities.users[id].timeline, data.entities.users[id].position)
+    : [],
+}));
 
-const data = createStore(null)
-  .on(getUsers.done, (state, { result }) => snapshotToArray(result));
+// const snapshotToArray = (snapshot) => Object.entries(snapshot)
+//   .map((e) => ({ ...e[1], key: e[0] }));
+// Определения
 
+export const componentMounted = createEvent('component mounted');
+export const componentUnmounted = createEvent('component unmounted');
+
+const getUsersFx = createEffect('get user');
+
+const loading = createStore(false);
+const error = createStore(null);
+const data = createStore(null);
 
 const $users = createStoreObject({ loading, data, error });
 
+// Логика и связи
+
+getUsersFx.use(() => usersApi.getList());
+
+loading.on(getUsersFx.pending, (state, pending) => pending);
+
+error.on(getUsersFx.fail, (state, { error: err }) => err);
+
+data.on(getUsersFx.done, (state, { result }) => dbComputed(normalize(result, usersSchema)));
+
+forward({
+  from: componentMounted,
+  to: getUsersFx,
+});
 
 export default $users;

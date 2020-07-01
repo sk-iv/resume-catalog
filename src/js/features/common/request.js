@@ -105,14 +105,11 @@ const createBody = (options, headers) => {
  * @param {Request} requestConfig
  */
 const logRequest = (requestConfig) => {
-  // if (localStorage.getItem('api-debug')) {
   /* eslint-disable no-console */
-
   console.groupCollapsed(
     `API >> ${requestConfig.method} ${requestConfig.url}`,
   );
   console.log('request:', requestConfig);
   console.groupEnd();
   /* eslint-enable no-console */
-  // }
 };
