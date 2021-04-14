@@ -15,6 +15,7 @@ export const getUser = createEffect('get user')
     if (id) {
       return usersApi.getItem(id)
         .then((data) => {
+          console.log('jjhjhjh', data)
           const j = normalize(data, userSchema);
           return j.entities.user[j.result];
         });

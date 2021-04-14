@@ -7,7 +7,7 @@ export const CatalogContext = React.createContext();
 
 export const CatalogProvider = ({ children }) => {
   React.useEffect(() => {
-    componentMounted(undefined);
+    componentMounted({id: 'data'});
     return () => componentUnmounted;
   }, []);
 

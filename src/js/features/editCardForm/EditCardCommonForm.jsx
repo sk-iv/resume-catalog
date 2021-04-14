@@ -43,7 +43,7 @@ const EditCardCommonForm = ({ values, submitCallback }) => {
   });
   const { handleSubmit, control, errors } = methods;
   const onSubmit = (data) => submitCallback({ id: '25lk78', ...data });
-
+  console.log('control', control)
   return (
 
     <form style={{ display: 'flex', flexDirection: 'column' }}>

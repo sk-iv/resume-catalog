@@ -1,23 +1,23 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { useMeasure } from 'react-use';
-import marked from 'marked';
-import { Link as RouterLink } from 'react-router-dom';
-import Grid, { GridTile } from '../../ui/Grid';
-import Paper from '../../ui/Paper';
-import Chip from '../../ui/Chip';
-import Timeline from '../timeline';
-import Link from '../../ui/Link';
+import React from 'react'
+import PropTypes from 'prop-types'
+import { useMeasure } from 'react-use'
+import marked from 'marked'
+import { Link as RouterLink } from 'react-router-dom'
+import Grid, { GridTile } from '../../ui/Grid'
+import Paper from '../../ui/Paper'
+import Chip from '../../ui/Chip'
+import Timeline from '../timeline'
+import Link from '../../ui/Link'
 
 const PreviewCard = ({
   id, title, subtitle, text, chips = [], units = [], img,
 }) => {
   const [ref, {
     width,
-  }] = useMeasure();
+  }] = useMeasure()
 
   return (
-    <Paper style={{ marginTop: '50px' }}>
+    <Paper elevation={1}>
       <Grid style={{ backgroundColor: '#fff' }}>
         <GridTile size={4}>
           <div
@@ -73,9 +73,9 @@ const PreviewCard = ({
         </GridTile>
       </Grid>
     </Paper>
-  );
-};
-export default PreviewCard;
+  )
+}
+export default PreviewCard
 
 PreviewCard.propTypes = {
   /**
@@ -103,4 +103,4 @@ PreviewCard.propTypes = {
    * // TODO: dummy image if img empty
    */
   img: PropTypes.string,
-};
+}

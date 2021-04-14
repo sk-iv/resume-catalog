@@ -1,5 +1,5 @@
 import {
-  createStore, createEffect, createStoreObject, createEvent, forward,
+  createStore, createEffect, sample, createEvent, combine,
 } from 'effector';
 import { normalize } from 'normalizr';
 import stringSimilarity from 'string-similarity';
@@ -52,21 +52,25 @@ const loading = createStore(false);
 const error = createStore(null);
 const data = createStore(null);
 
-const $users = createStoreObject({ loading, data, error });
+const $users = combine({ loading, data, error });
 
 // Логика и связи
 
-getUsersFx.use(() => usersApi.getList());
+getUsersFx.use((props) => usersApi.getList(props));
 
 loading.on(getUsersFx.pending, (state, pending) => pending);
 
 error.on(getUsersFx.fail, (state, { error: err }) => err);
 
-data.on(getUsersFx.done, (state, { result }) => dbComputed(normalize(result, usersSchema)));
+data.on(getUsersFx.done, (state, { result }) => {
+  const users = normalize(result.users, usersSchema)
+  return dbComputed(users)
+});
 
-forward({
-  from: componentMounted,
-  to: getUsersFx,
+sample({
+  source: componentMounted, /* 1 */
+  fn: (props) => (props), /* 2 */
+  target: getUsersFx, /* 3 */
 });
 
 export default $users;

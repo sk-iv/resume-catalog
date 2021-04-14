@@ -1,6 +1,5 @@
 import * as React from 'react';
 import Catalog from '../../features/catalog';
-import Carousel from '../../ui/Carousel';
 import Grid, { GridTile } from '../../ui/Grid';
 
 const pages = [
@@ -15,9 +14,6 @@ const CardsHomePage = () => (
   <Grid>
     <GridTile size={12}>
       <Catalog />
-    </GridTile>
-    <GridTile size={12}>
-      <Carousel pages={pages} />
     </GridTile>
   </Grid>
 );

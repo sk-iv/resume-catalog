@@ -1,11 +1,20 @@
 import request from '../features/common';
+import db from '../../db/db.json'
 
 /**
  * Get info about user or users
  */
-const getItem = (id) => request('GET', `/users/${id}.json`);
+const getItem = (id) => {
+  return new Promise((res) => {
+    setTimeout(res(db.users[id]), 1000)
+  })
+}
 
-const getList = () => request('GET', '/users.json');
+const getList = () => {
+  return new Promise((res) => {
+    setTimeout(res(db), 1000)
+  })
+}
 
 /**
  * update user

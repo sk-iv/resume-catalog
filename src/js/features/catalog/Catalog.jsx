@@ -15,9 +15,6 @@ const Catalog = () => {
     <CatalogProvider>
       <Grid>
         <GridTile size={12}>
-
-          <Button to={{ pathname: '/edit/card', state: { action: 'CREATE' } }} component={Link}>Создать</Button>
-
           <CatalogList />
         </GridTile>
       </Grid>
