@@ -75,7 +75,7 @@
     "history": "^4.10.1",
     "lodash-es": "^4.17.15",
     "lokijs": "^1.5.8",
-    "marked": "^0.8.2",
+    "marked": "^4.0.10",
     "normalizr": "^3.6.0",
     "prop-types": "^15.7.2",
     "qs": "^6.9.3",
